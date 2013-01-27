@@ -5,6 +5,7 @@ $redis = ConnectionPool::Wrapper.new(:size => 5, :timeout => 3) { Redis::Namespa
 
 Sidekiq.configure_server do |config|
   config.redis = { :url => $redis_connection_url, :namespace => 'sideslowsidekiq' }
+  config.server_middleware.remove Sidekiq::Middleware::Server::ActiveRecord
 end
 
 Sidekiq.configure_client do |config|

@@ -5,20 +5,25 @@ the more you increase the workers, the slower each job gets
 
 i've extracted this code from my other project. i've even tried mysql instead of postgres.
 
-to duplicate.
+# To duplicate:
 
+```
 RAILS_ENV=production rake db:setup
 RAILS_ENV=production rake db:seed
+```
 
-term #1
+## term #1
+
+```
 RAILS_ENV=production RAILS_ENV=production bundle exec sidekiq -C config/sidekiq.yml
+```
 
-term #2
+## term #2
+
+```
 RAILS_ENV=production bundle exec rails console
-
-1000.times {|i| SlowWorker.perform_async({}) } 
-# or
-1000.times {|i| SlowWorker.perform_async({'email' => 'foo@foo.com'}) }
+100.times {|i| SlowWorker.perform_async({}) }
+```
 
 increase/decrease sidekiq.yml workers, and notice the processing time in the logs, as well as wall time
 
