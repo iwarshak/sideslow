@@ -22,14 +22,14 @@ class SlowWorker
 
   # end
 
-  def perform(h)
-    Http.get("http://www.google.com")
-    # results
-    # 1000 jobs
-    # 19 sec -25 workers
-    # 14 sec - 50 workers
-    # 12 sec - 100 workers
-  end
+  # def perform(h)
+  #   Http.get("http://www.google.com")
+  #   # results
+  #   # 1000 jobs
+  #   # 19 sec -25 workers
+  #   # 14 sec - 50 workers
+  #   # 12 sec - 100 workers
+  # end
 
   # def perform(h)
   #   Http.get("http://www.google.com")
@@ -41,25 +41,25 @@ class SlowWorker
   #   # 16 sec  - 100 workers
   # end
 
-  # def perform(h)
-  #   Pony.mail({
-  #     :to => 'f@example.com',
-  #     :via => :smtp,
-  #     :subject => 'wow',
-  #     :body => 'hrm',
-  #     :via_options => {
-  #       :address        => '127.0.0.1',
-  #       :port           => '1025'
-  #     }
-  #   })
+  def perform(h)
+    Pony.mail({
+      :to => 'f@example.com',
+      :via => :smtp,
+      :subject => 'wow',
+      :body => 'hrm',
+      :via_options => {
+        :address        => '127.0.0.1',
+        :port           => '1025'
+      }
+    })
 
-  #   # results
-  #   # 1000 jobs
-  #   # 74 sec - 2 workers
-  #   # 66 sec - 25 workers
-  #   # 67 sec - 50 workers
-  #   # 73 sec - 100 workers
-  #   #
-  # end
+    # results
+    # 1000 jobs
+    # 74 sec - 2 workers
+    # 66 sec - 25 workers
+    # 67 sec - 50 workers
+    # 73 sec - 100 workers
+    #
+  end
 end
 
