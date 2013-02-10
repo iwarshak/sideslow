@@ -6,11 +6,19 @@ gem 'rails', '3.2.11'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 #gem 'sqlite3'
-gem 'sidekiq'
+gem 'sidekiq', :git => 'git://github.com/mperham/sidekiq.git', :ref => '6d59af72270b9d867d86c375bdc92ecdb853aae8'
 gem 'redis', '3.0.2'
 gem 'redis-namespace', '1.2.1'
 #gem 'pg'
 gem 'mysql2'
+gem 'slim'
+# if you require 'sinatra' you get the DSL extended to Object
+gem 'sinatra', :require => nil
+
+gem 'http'
+gem 'pony'
+# gem 'mail', :git => 'git://github.com/mikel/mail.git'
+gem 'mailcatcher'
 
 # Gems used only for assets and not required
 # in production environments by default.
