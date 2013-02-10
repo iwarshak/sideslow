@@ -22,7 +22,13 @@ RAILS_ENV=production RAILS_ENV=production bundle exec sidekiq -C config/sidekiq.
 
 ```
 RAILS_ENV=production bundle exec rails console
-100.times {|i| SlowWorker.perform_async({}) }
+r = [[{}]]*1000
+Sidekiq::Client.push_bulk('class' => SlowWorker, 'args' => r)
+```
+
+## term #3
+```
+bundle exec mailcatcher
 ```
 
 increase/decrease sidekiq.yml workers, and notice the processing time in the logs, as well as wall time

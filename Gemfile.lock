@@ -1,3 +1,15 @@
+GIT
+  remote: git://github.com/mperham/sidekiq.git
+  revision: 6d59af72270b9d867d86c375bdc92ecdb853aae8
+  ref: 6d59af72270b9d867d86c375bdc92ecdb853aae8
+  specs:
+    sidekiq (2.6.5)
+      celluloid (~> 0.12.0)
+      connection_pool (~> 1.0)
+      multi_json (~> 1)
+      redis (~> 3)
+      redis-namespace
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -33,6 +45,7 @@ GEM
     celluloid (0.12.4)
       facter (>= 1.6.12)
       timers (>= 1.0.0)
+    certified (0.1.1)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -41,11 +54,18 @@ GEM
       execjs
     coffee-script-source (1.4.0)
     connection_pool (1.0.0)
+    daemons (1.1.9)
     erubis (2.7.0)
+    eventmachine (1.0.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
     facter (1.6.17)
+    haml (3.1.7)
     hike (1.2.1)
+    http (0.4.0)
+      certified
+      http_parser.rb
+    http_parser.rb (0.5.3)
     i18n (0.6.1)
     journey (1.0.4)
     jquery-rails (2.2.0)
@@ -56,13 +76,26 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mailcatcher (0.5.10)
+      activesupport (~> 3.0)
+      eventmachine (~> 1.0.0)
+      haml (~> 3.1)
+      mail (~> 2.3)
+      sinatra (~> 1.2)
+      skinny (~> 0.2.3)
+      sqlite3 (~> 1.3)
+      thin (~> 1.5.0)
     mime-types (1.19)
     multi_json (1.5.0)
     mysql2 (0.3.11)
     polyglot (0.3.3)
+    pony (1.4)
+      mail (> 2.0)
     rack (1.4.4)
     rack-cache (1.2)
       rack (>= 0.4)
+    rack-protection (1.2.0)
+      rack
     rack-ssl (1.3.2)
       rack
     rack-test (0.6.2)
@@ -94,17 +127,27 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
-    sidekiq (2.6.5)
-      celluloid (~> 0.12.0)
-      connection_pool (~> 1.0)
-      multi_json (~> 1)
-      redis (~> 3)
-      redis-namespace
+    sinatra (1.3.3)
+      rack (~> 1.3, >= 1.3.6)
+      rack-protection (~> 1.2)
+      tilt (~> 1.3, >= 1.3.3)
+    skinny (0.2.3)
+      eventmachine (~> 1.0.0)
+      thin (~> 1.5.0)
+    slim (1.3.0)
+      temple (~> 0.4.1)
+      tilt (~> 1.3.3)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+    sqlite3 (1.3.7)
+    temple (0.4.1)
+    thin (1.5.0)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
     thor (0.17.0)
     tilt (1.3.3)
     timers (1.1.0)
@@ -121,12 +164,17 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
+  http
   jquery-rails
+  mailcatcher
   mysql2
+  pony
   rails (= 3.2.11)
   redis (= 3.0.2)
   redis-namespace (= 1.2.1)
   ruby-prof
   sass-rails (~> 3.2.3)
-  sidekiq
+  sidekiq!
+  sinatra
+  slim
   uglifier (>= 1.0.3)
